@@ -1,0 +1,19 @@
+body{
+    margin: 0px;
+    background: #cccccc;
+    font-size: 16px;
+}
+
+.formLogin{	
+    margin:5px;
+    width:240px;
+    height: 120px;
+    border-collapse: collapse;
+    border: none;
+    line-height: 32px;
+    font-family: "Microsoft YaHei UI";
+    color:#000000;
+    background: #ff9e9e;
+    padding: 3px 3px 3px 6px;
+    border:#770000 solid 2px;
+}
