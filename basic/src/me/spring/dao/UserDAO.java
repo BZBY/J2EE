@@ -19,8 +19,6 @@ public interface UserDAO {
 	@Select("Select * from t_user where id = #{user.id}")
 	public User findById(@Param("user") User user);
 	
-    @Select("Select * from t_user")
-    public List<User> findAll();    
     
     @Insert("Insert into t_user(username,password) values(#{user.username},#{user.password})")
     public int insert(@Param("user") User user);
@@ -46,6 +44,9 @@ public interface UserDAO {
 	            " where id = #{user.id}" +     
 	            "</script>")
 	    public void updateSet(@Param("user") User user);
+	
+    @Select("Select * from t_user")
+    public List<User> findAll();    
 	
 	@Select("Select * from t_user where loginname = #{user.loginname}")
 	public User findByLoginname(String loginname);

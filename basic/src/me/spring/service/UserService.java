@@ -1,5 +1,7 @@
 package me.spring.service;
 
+import java.util.List;
+
 import me.spring.entity.User;
 import me.spring.entity.UserView;
 
@@ -16,4 +18,10 @@ public interface UserService {
 	 * @return
 	 */
 	public int add(UserView userView);
+
+	/**
+	 * des: 查找所有的用户
+	 * @return
+	 */
+	public List<User> listAll();
 }

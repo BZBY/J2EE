@@ -1,0 +1,57 @@
+﻿<!--
+.menutitle {
+	color: #FFFFFF;
+	filter: Glow(Color=#0275B9, Strength=1);
+	letter-spacing: 5px;
+	font-size: 12px;
+	padding-top: 4px;
+}
+.menubg {
+	border: 1px solid #82ADCA;
+	background-color: #F2F8FD;
+}
+.menubg1 {
+	background-color: #F2F8FD;
+	font-size: 12px;
+	color: #001B51;
+	height: 20px;
+	text-align: center;
+	padding-top: 3px;
+	letter-spacing: 2px;
+}
+.menubgg {
+	background-color: #F2F8FD;
+	font-size: 12px;
+	color: #001B51;
+	height: 18px;
+	text-align: left;
+	padding-left: 5px;
+	padding-top: 3px;
+	letter-spacing: 2px;
+}
+.menubg2 {
+	font-size: 12px;
+	color: #004FA6;
+	text-align: center;
+	height: 20px;
+	background-image: url(images/menu_bg.gif);
+	background-repeat: no-repeat;
+	background-position: center;
+	padding-top: 3px;
+	letter-spacing: 2px;
+}
+ 
+a:link {font-size:12px; color: #001B51;text-decoration: none;}
+a:visited {font-size:12px; color: #001B51;text-decoration: none;}
+a:hover {font-size:12px; color: #004FA6;text-decoration: none;}
+.title {cursor:pointer;}
+-->
+html {
+overflow-x:hidden; overflow-y:auto;
+SCROLLBAR-HIGHLIGHT-COLOR: buttonface;
+SCROLLBAR-SHADOW-COLOR: buttonface;
+SCROLLBAR-3DLIGHT-COLOR: buttonhighlight;
+SCROLLBAR-TRACK-COLOR: #eeeeee;
+SCROLLBAR-DARKSHADOW-COLOR: buttonshadow;
+}
+

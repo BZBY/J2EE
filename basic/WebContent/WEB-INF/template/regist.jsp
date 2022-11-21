@@ -6,7 +6,6 @@
 <c:set var="serverPort" value="${pageContext.request.serverPort}" />
 <c:set var="contextPath" value="${pageContext.request.contextPath}" />
 <c:set var="basePath" value="${scheme}://${serverName}:${serverPort}${contextPath}" />
-<c:set var="basePath" value="${scheme}://${serverName}:${serverPort}${contextPath}" />
 <%
     String path = request.getContextPath();
     String basePath = request.getScheme() + "://" + 
@@ -28,7 +27,7 @@
 
 <body>
     <form class="login-form" action="${basePath}/lesson/regist" method="POST">
-        <h1>用户登录</h1>
+        <h1>用户注册</h1>
         <h4>登录名称：<input type="text" name="loginname" value="${userView.loginname}"></h4>
        <h4>用户名称： <input type="text" name="username" value="${userView.username}"></h4>
         <h4>登录密码：<input type="password" name="password"></h4>

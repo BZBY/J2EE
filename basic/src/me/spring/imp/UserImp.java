@@ -1,5 +1,7 @@
 package me.spring.imp;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -23,6 +25,11 @@ public class UserImp implements UserService{
 		int i1 = userDAO.addUser(userView);
 		int i2 = userDAO.addUserRole(userView);
 		return i1 + i2;
+	}
+
+	@Override
+	public List<User> listAll() {
+		return userDAO.findAll();
 	}
 	
 }

@@ -1,5 +1,7 @@
 package me.spring.controller;
 
+import javax.servlet.http.HttpServletRequest;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -27,12 +29,12 @@ public class LessonController {
 		result.setCode(0);
         result.setMsg("无");
         model.addAttribute("result", result);
-		return "index";
+		return "login";
 	}
 	
 	// 登录过程
 	@RequestMapping(value = "/login", method=RequestMethod.POST, produces = "text/html;charset=utf-8")	
-	public String login(@RequestParam("loginname") String loginname, @RequestParam("password") String password,  Model model) {
+	public String login(@RequestParam("loginname") String loginname, @RequestParam("password") String password,  Model model, HttpServletRequest request) {
 		System.out.println("loginname = " + loginname);
 		System.out.println("password = " + password);
 		User user = userService.findByLoginname(loginname);
@@ -41,7 +43,8 @@ public class LessonController {
 			if (user.getPassword().equals(password)) {
 				
 		        result.setCode(0);
-		        result.setMsg("查询成功");
+		        result.setMsg("登录成功");
+		        request.getSession().setAttribute("user", user);
 		        model.addAttribute("result", result);
 				return "redirect:userCenter";
 			}
@@ -50,7 +53,7 @@ public class LessonController {
         result.setMsg("登录失败");
         model.addAttribute("result", result);
 		System.out.println("数据库中未查询到");
-		return "index";
+		return "login";
 	}
 	
 	// 去往注册界面
@@ -131,6 +134,21 @@ public class LessonController {
 	
 	@RequestMapping(value = "/userCenter", produces = "text/html;charset=utf-8")	
 	public String userCenter() {
-		return "userCenter";
+		return "main";
+	}
+	
+	@RequestMapping(value = "/list", produces = "text/html;charset=utf-8")	
+	public String getList(User user, Model model) {
+		Result result = new Result();
+        result.setCode(0);
+        result.setMsg("查询成功");
+        result.setData(userService.listAll());      
+       //  user = userService.getById(user);
+        if(user==null) {
+            user = new User();
+        }
+        model.addAttribute("user", user);
+        model.addAttribute("result", result);
+        return "list";
 	}
 }
