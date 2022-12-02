@@ -44,4 +44,11 @@ public class UserView extends IdEntity {
 	public void setPhone(String phone) {
 		this.phone = phone;
 	}
+	@Override
+	public String toString() {
+		return "UserView [username=" + username + ", loginname=" + loginname + ", password=" + password + ", roleCode="
+				+ roleCode + ", Caption=" + Caption + ", phone=" + phone + "]";
+	}
+	
+	
 }

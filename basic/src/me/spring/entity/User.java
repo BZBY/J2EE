@@ -31,6 +31,11 @@ public class User extends IdEntity {
 	public void setPhone(String phone) {
 		this.phone = phone;
 	}
+	@Override
+	public String toString() {
+		return "User [username=" + username + ", loginname=" + loginname + ", password=" + password + ", phone=" + phone
+				+ "]";
+	}
     
     
 }
