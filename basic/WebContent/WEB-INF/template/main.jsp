@@ -55,6 +55,14 @@
 								<a href="${basePath}/lesson/captionList" class="li-a" target="iframe"><i class='bx bx-cog'></i> 权限管理</a>
 									
 							</li>
+							
+							
+							<li class="nav-tab nav-ul">
+								<a href="${basePath}/lesson/informationControl" class="li-a" target="iframe"><i class='bx bx-cog'></i> 信息管理</a>
+									
+							</li>
+							
+							
 							<li class="nav-tab nav-ul">
 								<a href="${basePath}/lesson/exit" class="li-a" onclick="return exit()"><i class='bx bx-edit'></i> 退出</a>
 

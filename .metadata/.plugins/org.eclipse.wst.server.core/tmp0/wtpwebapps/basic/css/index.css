@@ -10,11 +10,11 @@ body {
     width: 300px;
     background: #191919;
     padding: 30px;
-    /* 姘村钩灞呬腑澶勭悊 */
+    /* 水平居中处理 */
     margin: 5% auto 0 auto;
-    /* 鍦嗚鏁堟灉 */
+    /* 圆角效果 */
     border-radius: 30px;
-    opacity: 0.6;
+    opacity: 0.9;
     text-align: center;
 }
 
@@ -38,7 +38,7 @@ body {
     text-align: center;
     outline: none;
     color: white;
-    /* CSS3 杩囨浮鏁堟灉锛岃缃椂闀� */
+    /* CSS3 过渡效果，设置时长 */
     transition: 0.25s;
 }
 
@@ -56,10 +56,10 @@ body {
     text-align: center;
     padding: 10px 30px;
     margin: 20px 10px;
-    /* 璁剧疆榧犳爣涓哄彲鐐瑰嚮鐘舵�� */
+    /* 设置鼠标为可点击状态 */
     cursor: pointer;
     outline: none;
-    /* 璁剧疆杩囨浮鏃堕暱 */
+    /* 设置过渡时长 */
     transition: 0.25s;
 }
 
