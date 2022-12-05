@@ -1,0 +1,10 @@
+127.0.0.1 - - [17/Nov/2022:18:53:05 +0800] "GET / HTTP/1.1" 404 700
+127.0.0.1 - - [17/Nov/2022:18:53:36 +0800] "GET /basic/lesson/index HTTP/1.1" 200 1053
+127.0.0.1 - - [17/Nov/2022:18:53:36 +0800] "GET /basic/css/index.css HTTP/1.1" 200 2111
+127.0.0.1 - - [17/Nov/2022:18:53:36 +0800] "GET /basic/images/bg4.jpg HTTP/1.1" 200 358681
+127.0.0.1 - - [17/Nov/2022:18:53:37 +0800] "GET /favicon.ico HTTP/1.1" 404 711
+127.0.0.1 - - [17/Nov/2022:18:53:47 +0800] "GET /basic/lesson/toRegist HTTP/1.1" 200 1558
+127.0.0.1 - - [17/Nov/2022:18:53:47 +0800] "GET /basic/css/regist.css HTTP/1.1" 200 2115
+127.0.0.1 - - [17/Nov/2022:18:53:47 +0800] "GET /basic/js/jquery.min.js HTTP/1.1" 404 730
+127.0.0.1 - - [17/Nov/2022:18:53:52 +0800] "POST /basic/lesson/regist HTTP/1.1" 500 24754
+127.0.0.1 - - [17/Nov/2022:18:53:58 +0800] "POST /basic/lesson/login HTTP/1.1" 500 24714
