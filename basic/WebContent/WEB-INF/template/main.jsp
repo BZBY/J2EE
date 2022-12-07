@@ -33,7 +33,7 @@
 					<div class="nav-list">
 						<ul>
 							<li class="nav-tab a_active waves-effect">
-								<a href="${basePath}/lesson/list" class="li-a active" target="iframe"><i class='bx bx-home-smile'></i> 信息查询
+								<a href="${basePath}/lesson/list" class="li-a active" target="iframe"><i class='bx bx-home-smile'></i> 用户信息查询
 									<span class="badge badge-pill badge-primary float-right">3</span>
 								</a>
 							</li>
