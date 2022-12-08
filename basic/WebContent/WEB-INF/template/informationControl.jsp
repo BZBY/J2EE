@@ -76,7 +76,7 @@ input[type=text], select {
 <body>
 
 <div  class="box3">
-	<form:form name="dataForm2" modelAttribute="systemTable" method="post" action="${basePath}/lesson/deleteSystemTable">
+	<form:form name="dataForm2" modelAttribute="systemTable" method="post" action="${basePath}/lesson/informationControl">
 			 <form:input type="hidden" path="id"/>
        code：<form:input path="code" name="code" />
         caption：<form:input path="caption" name="caption"/>

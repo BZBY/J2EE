@@ -61,6 +61,7 @@
 								<a href="${basePath}/lesson/informationControl" class="li-a" target="iframe"><i class='bx bx-cog'></i> 信息管理</a>
 									
 							</li>
+						
 							
 							
 							<li class="nav-tab nav-ul">
@@ -79,7 +80,7 @@
 					<!-- <button type="button" class="btn btn-primary btn-sm showBtn" style="line-height: 10px; display: none;" onclick="showNavRight">
 						<i class="bx bx-expand" style="font-size: 16px;"></i>
 					</button> -->
-
+					
 					&nbsp;&nbsp;&nbsp;
 					<span style="font-size: 17px">${user.username}</span>
 					&nbsp;&nbsp;&nbsp;

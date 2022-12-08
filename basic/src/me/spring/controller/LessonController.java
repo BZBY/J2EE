@@ -566,6 +566,52 @@ public class LessonController {
 		return "captionList";
 	}
 
+	
+	
+	@RequestMapping(value = "/informationControl", produces = "text/html;charset=utf-8")
+	
+	public String informationControl(@RequestParam(defaultValue = "5") String pageSize, SystemTable systemTable,
+			@RequestParam(defaultValue = "面积分类") String tableName, HttpServletRequest request, Model model)
+			throws Exception {
+		Result result = new Result();
+		result.setCode(0);
+		result.setMsg("查询成功");
+
+		TableInfo tableInfo = new TableInfo();
+		tableInfo.setTableName(tableName);
+		
+
+		// systemTable = userService.getById(systemTable);
+
+		if (systemTable == null) {
+			systemTable = new SystemTable();
+		} else {
+			model.addAttribute("flag", true);
+		}
+
+		int len = getLen(tableName, userService, result);
+		model.addAttribute("systemTable", systemTable);
+		model.addAttribute("result", result);
+
+		PageInfo pageInfo = new PageInfo();
+		pageInfo.setCapacity(pageSize);
+
+		request.getSession().setAttribute("pageInfo", pageInfo);
+		request.getSession().setAttribute("tableInfo", tableInfo);
+		model.addAttribute("pageInfo", pageInfo);
+		model.addAttribute("pageSize", pageSize);
+		model.addAttribute("pageSize", pageSize);
+		model.addAttribute("len", len);
+		model.addAttribute("pageList", pageList);
+		model.addAttribute("tableList", tableList);
+		model.addAttribute("tableInfo", tableInfo);
+	
+		return "informationControl";
+	}
+	
+	
+	
+	
 	@RequestMapping(value = "/updateUserInfo", produces = "text/html;charset=utf-8")
 	public String updateUserInfo(@RequestParam("loginname") String loginname, @RequestParam("username") String username,
 			@RequestParam("password") String password, @RequestParam("comfirmPassword") String comfirmPassword,
