@@ -29,7 +29,7 @@
         dataForm.submit();
     }
     function saveSubmit(action){
-    	if (action == "updateSystemtable") {
+    	if (action == "inforControlSearch") {
     		dataForm.action = baseUrl+action;
             dataForm.submit();
     	}
@@ -92,7 +92,7 @@ input[type=text], select {
 			</form:select>
 			        代码：<input type="text"  name="code"/>
 			        标题：<input  type="text"  name="caption"/>
-				<input type="button" value="更新" onclick="saveSubmit('updateSystemtable')" />
+				<input type="button" value="查询" onclick="saveSubmit('inforControlSearch')" />
 				<input type="button" value="添加" onclick="saveSubmit('addSystemTable')" />
 			</form:form>
 		</div>

@@ -29,7 +29,8 @@ public class LessonController {
 
 	public static List<String> tableList = Arrays.asList("面积分类", "装修分类", "物业分类", "套件分类", "朝向分类", "展示位置", "产权分类", "所属楼盘",
 			"角色分类", "房屋状态");
-
+	public static List<String> ChaoXiangList = Arrays.asList("不限", "东", "南", "西", "北", "西北", "东北", "东南",
+			 "西难");
 	@Autowired
 	UserService userService;
 
@@ -401,7 +402,6 @@ public class LessonController {
 
 		TableInfo tableInfo = new TableInfo();
 		tableInfo.setTableName(tableName);
-		
 
 		// systemTable = userService.getById(systemTable);
 
@@ -429,35 +429,38 @@ public class LessonController {
 		model.addAttribute("tableInfo", tableInfo);
 		return "systemTable";
 	}
-	
+
 	// 将sql 的查询结果添加到data中 并返回行数
 	public static int getLen(String tableName, UserService userService, Result result) {
 		int len = 0;
 		if (tableName.equals("面积分类")) {
-			tableName = "t_areaclass";			
+			tableName = "t_areaclass";
 		} else if (tableName.equals("装修分类")) {
-			tableName = "t_decorateclass";			
-		}else if (tableName.equals("物业分类")) {
-			tableName = "t_propertyclass";			
-		}else if (tableName.equals("套件分类")) {
-			tableName = "t_suiteclass";			
-		}else if (tableName.equals("朝向分类")) {
-			tableName = "t_decorateclass";			
-		}else if (tableName.equals("展示位置")) {
-			tableName = "t_displaylocation";			
-		}else if (tableName.equals("产权分类")) {
-			tableName = "t_ownership";			
-		}else if (tableName.equals("所属楼盘")) {
-			tableName = "t_building";			
-		}else if (tableName.equals("角色分类")) {
 			tableName = "t_decorateclass";
-		}else if (tableName.equals("房屋状态")) {
+		} else if (tableName.equals("物业分类")) {
+			tableName = "t_propertyclass";
+		} else if (tableName.equals("套件分类")) {
+			tableName = "t_suiteclass";
+		} else if (tableName.equals("朝向分类")) {
+			tableName = "t_decorateclass";
+		} else if (tableName.equals("展示位置")) {
+			tableName = "t_displaylocation";
+		} else if (tableName.equals("产权分类")) {
+			tableName = "t_ownership";
+		} else if (tableName.equals("所属楼盘")) {
+			tableName = "t_building";
+		} else if (tableName.equals("角色分类")) {
+			tableName = "t_decorateclass";
+		} else if (tableName.equals("房屋状态")) {
 			tableName = "t_housingcondition";
 		}
 		result.setData(userService.getInfo(tableName));
 		len = userService.getInfo(tableName).size();
 		return len;
 	}
+	
+	
+	
 
 	// 翻页
 	@RequestMapping(value = "/updatePageCapacity2", produces = "text/html;charset=utf-8")
@@ -483,7 +486,6 @@ public class LessonController {
 		model.addAttribute("tableList", tableList);
 		model.addAttribute("tableInfo", tableInfo);
 		model.addAttribute("systemTable", systemTable);
-
 
 		return "systemTable";
 	}
@@ -566,10 +568,8 @@ public class LessonController {
 		return "captionList";
 	}
 
-	
-	
 	@RequestMapping(value = "/informationControl", produces = "text/html;charset=utf-8")
-	
+
 	public String informationControl(@RequestParam(defaultValue = "5") String pageSize, SystemTable systemTable,
 			@RequestParam(defaultValue = "面积分类") String tableName, HttpServletRequest request, Model model)
 			throws Exception {
@@ -579,7 +579,6 @@ public class LessonController {
 
 		TableInfo tableInfo = new TableInfo();
 		tableInfo.setTableName(tableName);
-		
 
 		// systemTable = userService.getById(systemTable);
 
@@ -605,13 +604,50 @@ public class LessonController {
 		model.addAttribute("pageList", pageList);
 		model.addAttribute("tableList", tableList);
 		model.addAttribute("tableInfo", tableInfo);
-	
+
 		return "informationControl";
 	}
-	
-	
-	
-	
+
+	@RequestMapping(value = "/inforControlSearch", produces = "text/html;charset=utf-8")
+
+	public String inforControlSearch(@RequestParam(defaultValue = "5") String pageSize, SystemTable systemTable,
+			@RequestParam(defaultValue = "面积分类") String tableName, HttpServletRequest request, Model model)
+			throws Exception {
+		Result result = new Result();
+		result.setCode(0);
+		result.setMsg("查询成功");
+
+		TableInfo tableInfo = new TableInfo();
+		tableInfo.setTableName(tableName);
+
+		// systemTable = userService.getById(systemTable);
+
+		if (systemTable == null) {
+			systemTable = new SystemTable();
+		} else {
+			model.addAttribute("flag", true);
+		}
+
+		int len = getLen(tableName, userService, result);
+		model.addAttribute("systemTable", systemTable);
+		model.addAttribute("result", result);
+
+		PageInfo pageInfo = new PageInfo();
+		pageInfo.setCapacity(pageSize);
+
+		request.getSession().setAttribute("pageInfo", pageInfo);
+		request.getSession().setAttribute("tableInfo", tableInfo);
+		model.addAttribute("pageInfo", pageInfo);
+		model.addAttribute("pageSize", pageSize);
+		model.addAttribute("pageSize", pageSize);
+		model.addAttribute("len", len);
+		model.addAttribute("pageList", pageList);
+		model.addAttribute("ChaoXiangList ", ChaoXiangList);
+		model.addAttribute("tableInfo", tableInfo);
+
+		return "inforControlSearch";
+	}
+
 	@RequestMapping(value = "/updateUserInfo", produces = "text/html;charset=utf-8")
 	public String updateUserInfo(@RequestParam("loginname") String loginname, @RequestParam("username") String username,
 			@RequestParam("password") String password, @RequestParam("comfirmPassword") String comfirmPassword,
@@ -682,13 +718,13 @@ public class LessonController {
 			model.addAttribute("captionEmpty", "❌标题不能为空");
 			b = false;
 		}
-		
+
 		if (b) {
 			// 需要修改的systemTable 信息
 
 			systemTable.setCode(code);
 			systemTable.setCaption(caption);
-			systemTable.setTableName(tableName);	
+			systemTable.setTableName(tableName);
 			try {
 				int resultCount = userService.updateSystemTable(systemTable);
 				if (resultCount > 0) {
@@ -705,7 +741,6 @@ public class LessonController {
 			}
 		}
 		result.setData(userService.getInfo(tableName));
-		
 
 		// 分页处理
 		PageInfo pageInfo = (PageInfo) request.getSession().getAttribute("pageInfo");
@@ -726,29 +761,29 @@ public class LessonController {
 
 	public static String getTableName(String tableName) {
 		if (tableName.equals("面积分类")) {
-			tableName = "t_areaclass";			
+			tableName = "t_areaclass";
 		} else if (tableName.equals("装修分类")) {
-			tableName = "t_decorateclass";			
-		}else if (tableName.equals("物业分类")) {
-			tableName = "t_propertyclass";			
-		}else if (tableName.equals("套件分类")) {
-			tableName = "t_suiteclass";			
-		}else if (tableName.equals("朝向分类")) {
-			tableName = "t_decorateclass";			
-		}else if (tableName.equals("展示位置")) {
-			tableName = "t_displaylocation";			
-		}else if (tableName.equals("产权分类")) {
-			tableName = "t_ownership";			
-		}else if (tableName.equals("所属楼盘")) {
-			tableName = "t_building";			
-		}else if (tableName.equals("角色分类")) {
+			tableName = "t_decorateclass";
+		} else if (tableName.equals("物业分类")) {
+			tableName = "t_propertyclass";
+		} else if (tableName.equals("套件分类")) {
+			tableName = "t_suiteclass";
+		} else if (tableName.equals("朝向分类")) {
+			tableName = "t_decorateclass";
+		} else if (tableName.equals("展示位置")) {
+			tableName = "t_displaylocation";
+		} else if (tableName.equals("产权分类")) {
+			tableName = "t_ownership";
+		} else if (tableName.equals("所属楼盘")) {
+			tableName = "t_building";
+		} else if (tableName.equals("角色分类")) {
 			tableName = "t_roleclass";
-		}else if (tableName.equals("房屋状态")) {
+		} else if (tableName.equals("房屋状态")) {
 			tableName = "t_housingcondition";
 		}
 		return tableName;
 	}
-	
+
 	@RequestMapping(value = "/addSystemTable", produces = "text/html;charset=utf-8")
 	public String addSystemTable(@RequestParam("code") String code, @RequestParam("caption") String caption,
 			HttpServletRequest request, Model model) {
@@ -757,10 +792,9 @@ public class LessonController {
 		Result result = new Result();
 		String tableName = getTableName(tableInfo.getTableName());
 
-
 		System.out.println("code = " + code);
 		System.out.println("caption = " + caption);
-		
+
 		boolean b = true; // 修改标志
 		if (code.equals("")) {
 			model.addAttribute("codeEmpty", "❌ code不能为空");
@@ -770,14 +804,14 @@ public class LessonController {
 			model.addAttribute("captionEmpty", "❌标题不能为空");
 			b = false;
 		}
-		
+
 		if (b) {
 			// 需要修改的systemTable 信息
 			systemTable.setId(0);
 			systemTable.setCode(code);
 			systemTable.setCaption(caption);
 			systemTable.setTableName(tableName);
-			
+
 			SystemTable temp = (SystemTable) userService.getByCode(systemTable);
 			System.out.println("temp = " + temp);
 			if (temp != null) {
@@ -786,7 +820,7 @@ public class LessonController {
 				model.addAttribute("codesame", "❌ code值唯一");
 			} else {
 				System.out.println("add = ");
-				
+
 				userService.addSystemTable(systemTable);
 				result.setCode(0);
 				result.setMsg("添加成功");
@@ -808,18 +842,16 @@ public class LessonController {
 		model.addAttribute("systemTable", systemTable);
 		model.addAttribute("result", result);
 
-		
 		return "systemTable";
 	}
 
-	
 	@RequestMapping(value = "/deleteSystemTable", produces = "text/html;charset=utf-8")
 	public String deleteSystemTable(SystemTable systemtable, HttpServletRequest request, Model model) {
 		TableInfo tableInfo = (TableInfo) request.getSession().getAttribute("tableInfo");
-		
+
 		String tableName = getTableName(tableInfo.getTableName());
 		systemtable.setTableName(tableName);
-		
+
 		System.out.println("systemtable = " + systemtable.getId());
 		Result result = new Result();
 		System.out.println("delete删除");
@@ -850,9 +882,10 @@ public class LessonController {
 		model.addAttribute("pageList", pageList);
 		model.addAttribute("tableInfo", tableInfo);
 		model.addAttribute("tableList", tableList);
-		
+
 		return "redirect:systemTable";
 	}
+
 	@RequestMapping(value = "/test", produces = "text/html;charset=utf-8")
 	public String test(HttpServletRequest request, Model model) {
 		request.getSession().invalidate();

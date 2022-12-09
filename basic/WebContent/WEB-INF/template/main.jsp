@@ -58,7 +58,7 @@
 							
 							
 							<li class="nav-tab nav-ul">
-								<a href="${basePath}/lesson/informationControl" class="li-a" target="iframe"><i class='bx bx-cog'></i> 信息管理</a>
+								<a href="${basePath}/lesson/inforControlSearch" class="li-a" target="iframe"><i class='bx bx-cog'></i> 信息管理</a>
 									
 							</li>
 						
